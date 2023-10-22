@@ -8,16 +8,30 @@ import NavItems from "./components/NavItems";
 import CardListItems from "./components/CardListItems";
 import Header from "./components/Header";
 import CartProvider from "./context/CartContext";
+import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
+import About from "./components/About";
 
 const App = () => {
   return (
     <CartProvider>
       <NavItems />
       <Header />
-      <CardListItems />
+      <Outlet />
     </CartProvider>
   );
 };
 
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      { path: "/", element: <CardListItems /> },
+      { path: "/about", element: <About /> },
+      {},
+    ],
+  },
+]);
+
 const root = ReactDom.createRoot(document.getElementById("root"));
-root.render(<App />);
+root.render(<RouterProvider router={appRouter} />);

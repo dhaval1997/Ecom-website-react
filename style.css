@@ -23,3 +23,15 @@
     margin: auto;
     gap: 86px;
 }
+.nav-link {
+    margin-right: 10px; /* Add right margin between links */
+    padding: 5px 10px; /* Add padding around the links */
+    text-decoration: none; /* Remove default link underline */
+    color: #333; /* Set the link color to your preference */
+  }
+  
+  /* Style for active links (optional) */
+  .nav-link.active {
+    font-weight: bold; /* Make active links bold, for example */
+  }
+  
