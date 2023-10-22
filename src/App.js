@@ -7,15 +7,15 @@ import React from "react";
 import NavItems from "./components/NavItems";
 import CardListItems from "./components/CardListItems";
 import Header from "./components/Header";
-import CartContext from "./context/CartContext";
+import CartProvider from "./context/CartContext";
 
 const App = () => {
   return (
-    <CartContext>
+    <CartProvider>
       <NavItems />
       <Header />
       <CardListItems />
-    </CartContext>
+    </CartProvider>
   );
 };
 
