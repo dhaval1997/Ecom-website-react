@@ -10,6 +10,7 @@ import Header from "./components/Header";
 import CartProvider from "./context/CartContext";
 import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
 import About from "./components/About";
+import Home from "./components/Home";
 
 const App = () => {
   return (
@@ -28,7 +29,7 @@ const appRouter = createBrowserRouter([
     children: [
       { path: "/", element: <CardListItems /> },
       { path: "/about", element: <About /> },
-      {},
+      { path: "/home", element: <Home /> },
     ],
   },
 ]);

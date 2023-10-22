@@ -19,9 +19,15 @@ const NavItems = () => {
           <Navbar.Brand href="#home">Ecom-Store</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Nav className="m-auto">
-            <Link to="/" className="nav-link">HOME</Link>
-            <Link href="#pricing" className="nav-link">STORE</Link>
-            <Link to="/about" className="nav-link">ABOUT</Link>
+            <Link to="/home" className="nav-link">
+              HOME
+            </Link>
+            <Link to="/" className="nav-link">
+              STORE
+            </Link>
+            <Link to="/about" className="nav-link">
+              ABOUT
+            </Link>
           </Nav>
           <Nav>
             <Dropdown>

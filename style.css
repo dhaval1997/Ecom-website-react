@@ -1,37 +1,48 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.cart-item img{
-    height: 70px;
+.cart-item img {
+  height: 70px;
 }
 
-.cart-item{
-    text-decoration: none;
-    list-style: none;
-    margin: 0;
-    padding: 0;
+.cart-item {
+  text-decoration: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.item-list{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 75% !important;
-    margin: auto;
-    gap: 86px;
+.item-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 75% !important;
+  margin: auto;
+  gap: 86px;
 }
 .nav-link {
-    margin-right: 10px; /* Add right margin between links */
-    padding: 5px 10px; /* Add padding around the links */
-    text-decoration: none; /* Remove default link underline */
-    color: #333; /* Set the link color to your preference */
-  }
-  
-  /* Style for active links (optional) */
-  .nav-link.active {
-    font-weight: bold; /* Make active links bold, for example */
-  }
-  
+  margin-right: 10px; 
+  padding: 5px 10px; 
+  text-decoration: none; 
+  color: #333;
+}
+
+.nav-link.active {
+  font-weight: bold;
+}
+.tour-item {
+    width: 75%;
+    margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px; /* Add margin between items */
+}
+
+.tour-list{
+    display:flex !important;
+    justify-content: space-between !important;
+}

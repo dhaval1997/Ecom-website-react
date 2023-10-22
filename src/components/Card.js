@@ -20,7 +20,7 @@ const ItemCard = (props) => {
         <Card.Title>{title}</Card.Title>
         <div>
           <Card.Text>{price}</Card.Text>
-          <Button variant="primary" onClick={addItemToCartHandler}>
+          <Button variant="dark" onClick={addItemToCartHandler}>
             ADD TO CART
           </Button>
         </div>
