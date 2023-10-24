@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { Dropdown, Container, Nav, Navbar, NavLink } from "react-bootstrap";
+import { Dropdown, Container, Nav, Navbar } from "react-bootstrap";
 import Cart from "./Cart";
 import { CartContext } from "../context/CartContext";
-import { FaShoppingCart } from "react-icons/fa"; // Import a cart icon from a library like react-icons
+import { FaShoppingCart } from "react-icons/fa"; 
 import { Link } from "react-router-dom";
 
 const NavItems = () => {
@@ -27,6 +27,9 @@ const NavItems = () => {
             </Link>
             <Link to="/about" className="nav-link">
               ABOUT
+            </Link>
+            <Link to="/contact" className="nav-link">
+              CONTACT US
             </Link>
           </Nav>
           <Nav>
