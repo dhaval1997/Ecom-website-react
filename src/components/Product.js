@@ -22,7 +22,7 @@ const Product = () => {
       <p>Description: {product.description}</p>
       <img src={product.imageUrl} alt={product.title} />
       <br/>
-      <Button>Add to Cart</Button>
+      <Button variant="dark" >Add to Cart</Button>
     </div>
   );
 };

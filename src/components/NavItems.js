@@ -1,17 +1,25 @@
 import React, { useContext } from "react";
-import { Dropdown, Container, Nav, Navbar } from "react-bootstrap";
+import { Dropdown, Container, Nav, Navbar, Button } from "react-bootstrap";
 import Cart from "./Cart";
 import { CartContext } from "../context/CartContext";
-import { FaShoppingCart } from "react-icons/fa"; 
+import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import Login from "./login/Login";
+import AuthContext from "./login/auth-context";
 
 const NavItems = () => {
   const cartCtx = useContext(CartContext);
+  const authCtx = useContext(AuthContext);
 
   let quantity = 0;
   cartCtx.items.forEach((item) => {
     quantity = quantity + Number(item.quantity);
   });
+
+  const logoutHandler = () => {
+    authCtx.logout();
+  };
+
   return (
     <>
       <Navbar>
@@ -31,6 +39,9 @@ const NavItems = () => {
             <Link to="/contact" className="nav-link">
               CONTACT US
             </Link>
+            <Link to="/login" className="nav-link">
+              Login
+            </Link>
           </Nav>
           <Nav>
             <Dropdown>
@@ -47,6 +58,9 @@ const NavItems = () => {
               </Dropdown.Menu>
             </Dropdown>
           </Nav>
+          {authCtx.isLoggedIn && (
+            <Button variant="danger" onClick={logoutHandler} >Logout</Button>
+          )}
         </Container>
       </Navbar>
     </>

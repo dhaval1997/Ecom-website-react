@@ -13,14 +13,18 @@ import About from "./components/About";
 import Home from "./components/Home";
 import Contact from "./components/Contact";
 import Product from "./components/Product";
+import { AuthContextProvider } from "./components/login/auth-context";
+import Login from "./components/login/Login";
 
 const App = () => {
   return (
-    <CartProvider>
-      <NavItems />
-      <Header />
-      <Outlet />
-    </CartProvider>
+    <AuthContextProvider>
+      <CartProvider>
+        <NavItems />
+        <Header />
+        <Outlet />
+      </CartProvider>
+    </AuthContextProvider>
   );
 };
 
@@ -34,6 +38,7 @@ const appRouter = createBrowserRouter([
       { path: "/home", element: <Home /> },
       { path: "/contact", element: <Contact /> },
       { path: "/product/:prodId", element: <Product /> },
+      { path: "/login", element: <Login /> },
     ],
   },
 ]);
