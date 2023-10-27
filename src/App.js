@@ -15,6 +15,7 @@ import Contact from "./components/Contact";
 import Product from "./components/Product";
 import { AuthContextProvider } from "./components/login/auth-context";
 import Login from "./components/login/Login";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const App = () => {
   return (
@@ -33,11 +34,25 @@ const appRouter = createBrowserRouter([
     path: "/",
     element: <App />,
     children: [
-      { path: "/", element: <CardListItems /> },
+      { path: "/", element: <Home /> },
       { path: "/about", element: <About /> },
-      { path: "/home", element: <Home /> },
+      {
+        path: "/store",
+        element: (
+          <ProtectedRoute>
+            <CardListItems />
+          </ProtectedRoute>
+        ),
+      },
       { path: "/contact", element: <Contact /> },
-      { path: "/product/:prodId", element: <Product /> },
+      {
+        path: "/product/:prodId",
+        element: (
+          <ProtectedRoute>
+            <Product />
+          </ProtectedRoute>
+        ),
+      },
       { path: "/login", element: <Login /> },
     ],
   },

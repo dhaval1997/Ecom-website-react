@@ -24,24 +24,26 @@ const NavItems = () => {
     <>
       <Navbar>
         <Container className="d-flex justify-content-center">
-          <Navbar.Brand href="#home">Ecom-Store</Navbar.Brand>
+          <Navbar.Brand href="/">Ecom-Store</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Nav className="m-auto">
-            <Link to="/home" className="nav-link">
+            <Link to="/" className="nav-link">
               HOME
             </Link>
-            <Link to="/" className="nav-link">
+            <Link to="/store" className="nav-link">
               STORE
             </Link>
             <Link to="/about" className="nav-link">
               ABOUT
             </Link>
             <Link to="/contact" className="nav-link">
-              CONTACT US
+              CONTACT
             </Link>
-            <Link to="/login" className="nav-link">
-              Login
-            </Link>
+            {!authCtx.isLoggedIn && (
+              <Link to="/login" className="nav-link">
+                LOGIN
+              </Link>
+            )}
           </Nav>
           <Nav>
             <Dropdown>
@@ -59,7 +61,9 @@ const NavItems = () => {
             </Dropdown>
           </Nav>
           {authCtx.isLoggedIn && (
-            <Button variant="danger" onClick={logoutHandler} >Logout</Button>
+            <Button variant="danger" onClick={logoutHandler}>
+              Logout
+            </Button>
           )}
         </Container>
       </Navbar>
