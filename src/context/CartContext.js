@@ -2,6 +2,7 @@ import { createContext, useContext, useState } from "react";
 import AuthContext from "../components/login/auth-context";
 
 export const CartContext = createContext({
+  cartItems: [],
   items: [],
   addItem: (item) => {},
   removeItem: (id) => {},
@@ -26,7 +27,7 @@ const CartProvider = ({ children }) => {
       setCartItems(updatedCartItems);
     }
     const userEmail = authCtx.userEmail;
-    const endpoint = `https://react-auth-d5023-default-rtdb.firebaseio.com/email/${userEmail}.json`;
+    const endpoint = `https://crudcrud.com/api/10f1c49d7ad94827b89ae775e1c01d5a/cartItems`;
     fetch(endpoint, {
       method: "POST",
       headers: {
@@ -45,7 +46,7 @@ const CartProvider = ({ children }) => {
   const loadCart = () => {
     const userEmail = authCtx.userEmail;
     console.log("useremailcart: ", userEmail);
-    const endpoint = `https://react-auth-d5023-default-rtdb.firebaseio.com/email/${userEmail}.json`;
+    const endpoint = `https://crudcrud.com/api/10f1c49d7ad94827b89ae775e1c01d5a/cartItems`;
 
     fetch(endpoint)
       .then((response) => response.json())
@@ -55,6 +56,7 @@ const CartProvider = ({ children }) => {
       .catch((error) => {
         console.error(error);
       });
+      console.log("loadcart: ",data);
   };
 
   const removeFromCartHandler = (id) => {
@@ -74,6 +76,7 @@ const CartProvider = ({ children }) => {
   };
 
   const cartContext = {
+    cartItems: loadCart,
     items: cartItems,
     addItem: addToCartHandler,
     removeItem: removeFromCartHandler,
