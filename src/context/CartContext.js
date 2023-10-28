@@ -1,4 +1,5 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
+import AuthContext from "../components/login/auth-context";
 
 export const CartContext = createContext({
   items: [],
@@ -8,6 +9,7 @@ export const CartContext = createContext({
 
 const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
+  const authCtx = useContext(AuthContext);
 
   const addToCartHandler = (item) => {
     const itemIndex = cartItems.findIndex(
@@ -23,6 +25,36 @@ const CartProvider = ({ children }) => {
       updatedCartItems[itemIndex].quantity++;
       setCartItems(updatedCartItems);
     }
+    const userEmail = authCtx.userEmail;
+    const endpoint = `https://react-auth-d5023-default-rtdb.firebaseio.com/email/${userEmail}.json`;
+    fetch(endpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ product: item, quantity: 1 }),
+    })
+      .then((response) => {
+        console.log("response:", response);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  const loadCart = () => {
+    const userEmail = authCtx.userEmail;
+    console.log("useremailcart: ", userEmail);
+    const endpoint = `https://react-auth-d5023-default-rtdb.firebaseio.com/email/${userEmail}.json`;
+
+    fetch(endpoint)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Loaded data", data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   const removeFromCartHandler = (id) => {

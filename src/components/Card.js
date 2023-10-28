@@ -4,7 +4,7 @@ import { CartContext } from "../context/CartContext";
 
 const ItemCard = (props) => {
   const { card, img, title, price } = props;
-  console.log(card);
+  // console.log(card);
   const cartCtx = useContext(CartContext);
 
   const addItemToCartHandler = (e) => {

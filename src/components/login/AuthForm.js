@@ -39,7 +39,11 @@ const AuthForm = () => {
       setIsLoading(false);
       if (response.ok) {
         const data = await response.json();
+        console.log(data);
         authCtx.login(data.idToken);
+        authCtx.userEmail(data.email);
+        console.log('auth email:', authCtx.userEmail);
+        console.log('auth login:', authCtx.login);
       } else {
         let errorMessage = "Authentication failed!";
         throw new Error(errorMessage);
@@ -77,7 +81,9 @@ const AuthForm = () => {
           />
         </Form.Group>
         {!isLoading && (
-          <Button type="submit" variant="dark">{isLogin ? "Login" : "Create Account"}</Button>
+          <Button type="submit" variant="dark">
+            {isLogin ? "Login" : "Create Account"}
+          </Button>
         )}
         {isLoading && <p>Loading..</p>}
         <Button variant="dark" type="button" onClick={switchAuthModeHandler}>
